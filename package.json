@@ -1,0 +1,49 @@
+{
+  "name": "crypto2bot",
+  "version": "0.1.6",
+  "description": "Buy and sell crypto without fucking!",
+  "author": "Sgoldik",
+  "scripts": {
+    "start": "yarn run serve",
+    "build": "yarn run build-ts && yarn run tslint",
+    "serve": "node dist/bot.js",
+    "watch-node": "nodemon dist/bot.js",
+    "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\"  \"yarn run watch-ts\" \"yarn run watch-node\"",
+    "build-ts": "tsc",
+    "watch-ts": "tsc -w",
+    "tslint": "tslint -c tslint.json -p tsconfig.json",
+    "debug": "yarn run build && yarn run watch-debug",
+    "serve-debug": "nodemon --inspect dist/bot.js",
+    "watch-debug": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"yarn run watch-ts\" \"yarn run serve-debug\"",
+    "test": "yarn run build && yarn run tslint"
+  },
+  "files": [
+    "src",
+    "types"
+  ],
+  "dependencies": {
+    "@types/mysql2": "types/mysql2",
+    "@types/uuid": "^7.0.2",
+    "axios": "^0.19.2",
+    "dotenv": "^8.2.0",
+    "mysql2": "^2.1.0",
+    "string-similarity": "^4.0.1",
+    "telegraf": "^3.38.0",
+    "telegraf-i18n": "^6.6.0",
+    "uuid": "^7.0.2"
+  },
+  "devDependencies": {
+    "@types/cheerio": "^0.22.10",
+    "@types/dotenv": "^6.1.0",
+    "@types/lodash": "^4.14.119",
+    "@types/mongoose": "^5.3.1",
+    "@types/node": "^10.12.7",
+    "@types/request-promise": "^4.1.42",
+    "@types/string-similarity": "^3.0.0",
+    "concurrently": "^4.0.1",
+    "nodemon": "^1.18.6",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "typescript": "^3.1.6"
+  }
+}

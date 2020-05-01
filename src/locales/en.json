@@ -1,0 +1,25 @@
+{
+  "scenes": {
+    "start": {
+      "hello": "Привет!",
+      "welcome_back": "С возвращением!"
+    },
+    "question": {
+      "create": "Создать вопрос"
+    },
+    "play": {
+      "play": "Играть"
+    }
+  },
+  "keyboards": {
+    "back": "Назад",
+    "main": {
+      "question": "Создать вопрос",
+      "play": "Играть"
+    }
+  },
+  "shared": {
+    "what_next": "Привет! Чем я могу помочь?",
+    "something_went_wrong": "Произошла ошибка... Попробуйте еще раз."
+  }
+}
