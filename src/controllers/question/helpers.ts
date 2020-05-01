@@ -10,7 +10,7 @@ export function getQuestionKeyboard(ctx: TelegrafContext) {
         [
           m.callbackButton(
             ctx.i18n.t('scenes.question.create'),
-           'dsada',
+            JSON.stringify({ a: 'clickButton', type: 'onCreateQuestion' }),
             false
           )
         ],

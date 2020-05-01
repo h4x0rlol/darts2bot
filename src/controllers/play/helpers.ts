@@ -2,7 +2,7 @@ import { Extra, Markup } from 'telegraf';
 import { TelegrafContext } from 'telegraf/typings/context';
 
 /**
- * Returns contact button
+ * Returns play scene keyboard
  */
 export function getPlayKeyboard(ctx: TelegrafContext) {
     return Extra.HTML().markup((m: Markup) =>
@@ -10,7 +10,7 @@ export function getPlayKeyboard(ctx: TelegrafContext) {
         [
           m.callbackButton(
             ctx.i18n.t('scenes.play.text'),
-          'dsda',
+            JSON.stringify({ a: 'clickButton', type: 'onPlayClick' }),
             false
           )
         ],

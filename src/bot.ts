@@ -16,6 +16,8 @@ const pool = mysql.createPool({
   password: process.env.MYSQL_PASSWORD
 }).promise();
 
+
+
 export default pool;
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
@@ -54,22 +56,10 @@ bot.hears(
 bot.hears(
   match('keyboards.back'),
   async (ctx: TelegrafContext) => {
-    // If this method was triggered, it means that bot was updated when user was not in the main menu..
     console.log('Return to the main menu with the back button');
     const { mainKeyboard } = getMainKeyboard(ctx);
-
     await ctx.reply(ctx.i18n.t('shared.what_next'), mainKeyboard);
   }
 );
-
-// bot.hears(
-//   match('keyboards.main.deals'),
-//   async (ctx: TelegrafContext) => await ctx.scene.enter('deals')
-// );
-
-// bot.hears(
-//   match('keyboards.main.contact'),
-//   async (ctx: TelegrafContext) => await ctx.scene.enter('contact')
-// );
 
 bot.launch();

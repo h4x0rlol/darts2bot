@@ -18,4 +18,5 @@ start.leave(async (ctx: TelegrafContext) => {
     await ctx.reply(ctx.i18n.t('shared.what_next'), mainKeyboard);
 });
 
+
 export default start;

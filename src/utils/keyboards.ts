@@ -1,4 +1,4 @@
-import { Extra, Markup, } from 'telegraf';
+import { Extra, Markup } from 'telegraf';
 import { TelegrafContext } from 'telegraf/typings/context';
 
 /**
@@ -22,8 +22,8 @@ export const getBackKeyboard = (ctx: TelegrafContext) => {
  * @param ctx - telegram context
  */
 export const getMainKeyboard = (ctx: TelegrafContext) => {
-  const mainKeyboardQuestion = ctx.i18n.t('keyboards.main.question');
-  const mainKeyboardPlay = ctx.i18n.t('keyboards.main.play');
+	const mainKeyboardQuestion = ctx.i18n.t('keyboards.main.question');
+	const mainKeyboardPlay = ctx.i18n.t('keyboards.main.play');
 
 	let mainKeyboard: any = Markup.keyboard([
 		[mainKeyboardQuestion, mainKeyboardPlay] as any
@@ -32,7 +32,7 @@ export const getMainKeyboard = (ctx: TelegrafContext) => {
 
 	return {
 		mainKeyboard,
-    mainKeyboardQuestion,
-    mainKeyboardPlay
+		mainKeyboardQuestion,
+		mainKeyboardPlay
 	};
 };

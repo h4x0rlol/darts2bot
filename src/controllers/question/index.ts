@@ -12,8 +12,8 @@ question.enter(async (ctx: TelegrafContext) => {
   });
 
 question.leave(async (ctx: TelegrafContext) => {
-    const { mainKeyboard } = getMainKeyboard(ctx);
-    await ctx.reply(ctx.i18n.t('shared.what_next'), mainKeyboard);
+    const uid = ctx.from.id;
+    console.log(`${uid} leaves question scene`);
 });
 
 export default question;
