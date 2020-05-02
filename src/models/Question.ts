@@ -6,8 +6,10 @@ class Question {
     question: string;
     language: string;
 
-    constructor() {
-        
+    constructor(creator_id: number, question: string, language: string) {
+        this.creator_id = creator_id;
+        this.question = question;
+        this.language = language;
     }
 
     async save() {
