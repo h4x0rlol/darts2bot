@@ -34,9 +34,10 @@ class Question {
         try {
             const [rows] = await pool.execute(`SELECT question FROM questions WHERE creator_id = '${creator_id}' ORDER BY ID DESC LIMIT 1'`);
             const data = JSON.stringify(rows);
+            const question = JSON.parse(data);
 
-            if (data) {
-                return data[0];
+            if (question) {
+                return question[0];
             } else {
                 return false;
             }

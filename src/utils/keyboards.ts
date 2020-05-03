@@ -36,3 +36,43 @@ export const getMainKeyboard = (ctx: TelegrafContext) => {
 		mainKeyboardPlay
 	};
 };
+
+/**
+ * Returns play keyboard and its buttons according to the language
+ * @param ctx - telegram context
+ */
+export const getPlayKeyboard = (ctx: TelegrafContext) => {
+	const playKeyboardQuestion = ctx.i18n.t('keyboards.main.question');
+	const playKeyboardPlay = ctx.i18n.t('keyboards.game.start');
+
+	let playKeyboard: any = Markup.keyboard([
+		[playKeyboardQuestion, playKeyboardPlay] as any
+	]);
+	playKeyboard = playKeyboard.resize().extra();
+
+	return {
+		playKeyboard,
+		playKeyboardQuestion,
+		playKeyboardPlay
+	};
+};
+
+/**
+ * Returns choose language keyboard and its buttons according to the language
+ * @param ctx - telegram context
+ */
+export const getLanguageKeyboard = (ctx: TelegrafContext) => {
+	const languageKeyboardRussian = ctx.i18n.t('keyboards.language.ru');
+	const languageKeyboardEnglish = ctx.i18n.t('keyboards.language.en');
+
+	let languageKeyboard: any = Markup.keyboard([
+		[languageKeyboardRussian, languageKeyboardEnglish] as any
+	]);
+	languageKeyboard = languageKeyboard.resize().extra();
+
+	return {
+		languageKeyboard,
+		languageKeyboardRussian,
+		languageKeyboardEnglish
+	};
+};
