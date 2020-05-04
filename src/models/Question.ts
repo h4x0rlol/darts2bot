@@ -32,7 +32,7 @@ class Question {
 
     static async lastQuestionByCreatorId(creator_id: number) {
         try {
-            const [rows] = await pool.execute(`SELECT question FROM questions WHERE creator_id = '${creator_id}' ORDER BY ID DESC LIMIT 1'`);
+            const [rows] = await pool.execute(`SELECT question FROM questions WHERE creator_id = '${creator_id}' ORDER BY ID DESC LIMIT 1`);
             const data = JSON.stringify(rows);
             const question = JSON.parse(data);
 
