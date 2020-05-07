@@ -3,7 +3,7 @@ import { getPlayKeyboard, getMainKeyboard, getErrorLanguageKeyboard, getBackKeyb
 import { TelegrafContext } from 'telegraf/typings/context';
 import Question from '../../models/Question';
 import User from '../../models/User';
-import { getQuestions } from '../../models/query';
+import { getRuQuestions, getEnQuestions } from '../../models/query';
 
 
 const play = new Scene('play');
@@ -24,10 +24,24 @@ play.enter(async (ctx: TelegrafContext) => {
     else {
       const language = user.language;
       if (language === 'ru') {
-        console.log('russian questions');
+        const ruQuestions = await getRuQuestions();
+        if (ruQuestions) {
+          const randomQuestion = Math.floor(ruQuestions.length * Math.random());
+          await ctx.reply(ruQuestions[randomQuestion].question, playKeyboard);
+        }
+        else {
+          await ctx.reply(ctx.i18n.t('scenes.play.empty'), playKeyboard);
+        }
       }
       else if (language === 'en') {
-        console.log('eng quest');
+        const enQuestions = await getEnQuestions();
+        if (enQuestions) {
+          const randomQuestion = Math.floor(enQuestions.length * Math.random());
+          await ctx.reply(enQuestions[randomQuestion].question, playKeyboard);
+        }
+        else {
+          await ctx.reply(ctx.i18n.t('scenes.play.empty'), playKeyboard);
+        }
       }
     }
 
@@ -48,18 +62,37 @@ play.on('text', async (ctx: TelegrafContext) => {
   const { playKeyboard } = getPlayKeyboard(ctx);
 
   if (user) {
-    console.log('user');
     if (message === ctx.i18n.t('keyboards.main.question')) {
       ctx.scene.leave();
       await ctx.scene.enter('question');
     }
-    else if (message === ctx.i18n.t('scenes.play.new')) {
-      const allQuestions = await getQuestions();
-      await ctx.reply(allQuestions[0].question, playKeyboard);
+    else if (user.language === 'ru') {
+      if (message === ctx.i18n.t('scenes.play.new')) {
+        const ruQuestions = await getRuQuestions();
+        if (ruQuestions) {
+          const randomQuestion = Math.floor(ruQuestions.length * Math.random());
+          await ctx.reply(ruQuestions[randomQuestion].question, playKeyboard);
+        }
+        else {
+          await ctx.reply(ctx.i18n.t('scenes.play.empty'), playKeyboard);
+        }
+      }
+    }
+    else if (user.language === 'en') {
+      if (message === ctx.i18n.t('scenes.play.new')) {
+        const enQuestions = await getEnQuestions();
+        if (enQuestions) {
+          const randomQuestion = Math.floor(enQuestions.length * Math.random());
+          await ctx.reply(enQuestions[randomQuestion].question, playKeyboard);
+        }
+        else {
+          await ctx.reply(ctx.i18n.t('scenes.play.empty'), playKeyboard);
+        }
+      }
     }
   }
 
-  else if (!user) {
+  else {
     if (message === ctx.i18n.t('keyboards.language.ru')) {
       const newUser = new User(id, 'ru');
       await newUser.save();
