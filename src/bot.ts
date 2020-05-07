@@ -16,12 +16,9 @@ const pool = mysql.createPool({
   password: process.env.MYSQL_PASSWORD
 }).promise();
 
-
-
 export default pool;
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
-// bot.use(Telegraf.log());
 
 const stage = new Stage([
   start,

@@ -25,7 +25,7 @@ play.enter(async (ctx: TelegrafContext) => {
       const language = user.language;
       if (language === 'ru') {
         const ruQuestions = await getRuQuestions();
-        if (ruQuestions) {
+        if (typeof ruQuestions != 'undefined' && ruQuestions.length) {
           const randomQuestion = Math.floor(ruQuestions.length * Math.random());
           await ctx.reply(ruQuestions[randomQuestion].question, playKeyboard);
         }
@@ -35,7 +35,7 @@ play.enter(async (ctx: TelegrafContext) => {
       }
       else if (language === 'en') {
         const enQuestions = await getEnQuestions();
-        if (enQuestions) {
+        if (typeof enQuestions != 'undefined' && enQuestions.length) {
           const randomQuestion = Math.floor(enQuestions.length * Math.random());
           await ctx.reply(enQuestions[randomQuestion].question, playKeyboard);
         }
@@ -69,7 +69,7 @@ play.on('text', async (ctx: TelegrafContext) => {
     else if (user.language === 'ru') {
       if (message === ctx.i18n.t('scenes.play.new')) {
         const ruQuestions = await getRuQuestions();
-        if (ruQuestions) {
+        if (typeof ruQuestions != 'undefined' && ruQuestions.length) {
           const randomQuestion = Math.floor(ruQuestions.length * Math.random());
           await ctx.reply(ruQuestions[randomQuestion].question, playKeyboard);
         }
@@ -81,7 +81,7 @@ play.on('text', async (ctx: TelegrafContext) => {
     else if (user.language === 'en') {
       if (message === ctx.i18n.t('scenes.play.new')) {
         const enQuestions = await getEnQuestions();
-        if (enQuestions) {
+        if (typeof enQuestions != 'undefined' && enQuestions.length) {
           const randomQuestion = Math.floor(enQuestions.length * Math.random());
           await ctx.reply(enQuestions[randomQuestion].question, playKeyboard);
         }

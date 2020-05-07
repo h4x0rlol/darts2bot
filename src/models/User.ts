@@ -40,6 +40,14 @@ class User {
             console.log(e);
         }
     }
+
+    static async deleteById(id: number) {
+        try {
+            await pool.execute(`DELETE FROM users  WHERE id='${id}'`);
+        } catch (e) {
+            console.log(e);
+        }
+    }
 }
 
 export default User;

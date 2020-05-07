@@ -15,7 +15,6 @@ start.enter(async (ctx: TelegrafContext) => {
 
     if (user) {
         await ctx.reply(ctx.i18n.t('scenes.start.welcome_back'), mainKeyboard);
-        ctx.scene.leave();
     } else {
         await ctx.reply(ctx.i18n.t('scenes.start.desc'), languageKeyboard);
     }
@@ -38,6 +37,10 @@ start.on('text', async (ctx: TelegrafContext) => {
         await newUser.save();
         await ctx.reply(ctx.i18n.t('scenes.start.choosen'), mainKeyboard);
         ctx.scene.leave();
+    }
+    else if (language === '/language') {
+        await User.deleteById(uid);
+        ctx.scene.enter('start');
     }
     else {
         await ctx.reply(ctx.i18n.t('scenes.start.language'), languageKeyboard);
