@@ -7,14 +7,14 @@ const start = new Scene('start');
 
 start.enter(async (ctx: TelegrafContext) => {
     const uid = ctx.from.id;
-    console.log(`${uid} enters start scene`);
+    // console.log(`${uid} enters start scene`);
     const { mainKeyboard } = getMainKeyboard(ctx);
     const { languageKeyboard } = getLanguageKeyboard(ctx);
-
     const user = await User.findById(uid);
 
     if (user) {
         await ctx.reply(ctx.i18n.t('scenes.start.welcome_back'), mainKeyboard);
+        ctx.scene.leave();
     } else {
         await ctx.reply(ctx.i18n.t('scenes.start.desc'), languageKeyboard);
     }
@@ -49,10 +49,9 @@ start.on('text', async (ctx: TelegrafContext) => {
 
 start.leave(async (ctx: TelegrafContext) => {
     const { mainKeyboard } = getMainKeyboard(ctx);
-    const uid = ctx.from.id;
-    console.log(`${uid} leaves start scene`);
+    // const uid = ctx.from.id;
+    // console.log(`${uid} leaves start scene`);
     await ctx.reply(ctx.i18n.t('shared.what_next'), mainKeyboard);
 });
-
 
 export default start;

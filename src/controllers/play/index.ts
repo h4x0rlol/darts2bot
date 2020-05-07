@@ -10,10 +10,9 @@ const play = new Scene('play');
 
 play.enter(async (ctx: TelegrafContext) => {
   const id = ctx.from.id;
-  console.log(`${id} enters play scene`);
+  // console.log(`${id} enters play scene`);
   const { playKeyboard } = getPlayKeyboard(ctx);
   const user = await User.findById(id);
-  const { mainKeyboard } = getMainKeyboard(ctx);
   const { errorLanguageKeyboard } = getErrorLanguageKeyboard(ctx);
 
   if (user) {
@@ -44,13 +43,11 @@ play.enter(async (ctx: TelegrafContext) => {
         }
       }
     }
-
   }
   else {
     await ctx.reply(ctx.i18n.t('scenes.start.language'), errorLanguageKeyboard);
   }
 });
-
 
 play.on('text', async (ctx: TelegrafContext) => {
   const message = ctx.message.text;
@@ -58,7 +55,6 @@ play.on('text', async (ctx: TelegrafContext) => {
   const user = await User.findById(id);
   const { mainKeyboard } = getMainKeyboard(ctx);
   const { errorLanguageKeyboard } = getErrorLanguageKeyboard(ctx);
-  const { backKeyboard } = getBackKeyboard(ctx);
   const { playKeyboard } = getPlayKeyboard(ctx);
 
   if (user) {
@@ -91,7 +87,6 @@ play.on('text', async (ctx: TelegrafContext) => {
       }
     }
   }
-
   else {
     if (message === ctx.i18n.t('keyboards.language.ru')) {
       const newUser = new User(id, 'ru');
@@ -116,8 +111,8 @@ play.on('text', async (ctx: TelegrafContext) => {
 });
 
 play.leave(async (ctx: TelegrafContext) => {
-  const uid = ctx.from.id;
-  console.log(`${uid} leaves play scene`);
+  // const uid = ctx.from.id;
+  // console.log(`${uid} leaves play scene`);
 });
 
 export default play;

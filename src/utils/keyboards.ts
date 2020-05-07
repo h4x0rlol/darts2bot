@@ -1,4 +1,4 @@
-import { Extra, Markup } from 'telegraf';
+import { Markup } from 'telegraf';
 import { TelegrafContext } from 'telegraf/typings/context';
 
 /**
