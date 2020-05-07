@@ -53,7 +53,7 @@ bot.hears(
 bot.hears(
   match('keyboards.back'),
   async (ctx: TelegrafContext) => {
-    console.log('Return to the main menu with the back button');
+    // console.log('Return to the main menu with the back button');
     const { mainKeyboard } = getMainKeyboard(ctx);
     await ctx.reply(ctx.i18n.t('shared.what_next'), mainKeyboard);
   }

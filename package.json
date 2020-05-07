@@ -1,8 +1,8 @@
 {
-  "name": "crypto2bot",
-  "version": "0.1.6",
-  "description": "Buy and sell crypto without fucking!",
-  "author": "Sgoldik",
+  "name": "darts2bot",
+  "version": "0.1",
+  "description": "Darts telegram game!",
+  "author": "h4x0rlol",
   "scripts": {
     "start": "yarn run serve",
     "build": "yarn run build-ts && yarn run tslint",
