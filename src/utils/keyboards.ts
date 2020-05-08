@@ -60,43 +60,23 @@ export const getPlayKeyboard = (ctx: TelegrafContext) => {
 };
 
 /**
- * Returns choose language keyboard and its buttons according to the language
+ * Returns language keyboard and its buttons according to the language
  * @param ctx - telegram context
  */
 export const getLanguageKeyboard = (ctx: TelegrafContext) => {
 	const languageKeyboardRussian = ctx.i18n.t('keyboards.language.ru');
 	const languageKeyboardEnglish = ctx.i18n.t('keyboards.language.en');
+	const languageKeyboardBack = ctx.i18n.t('keyboards.back');
 
 	let languageKeyboard: any = Markup.keyboard([
-		[languageKeyboardRussian, languageKeyboardEnglish] as any
+		[languageKeyboardRussian, languageKeyboardEnglish, languageKeyboardBack] as any
 	]);
 	languageKeyboard = languageKeyboard.resize().extra();
 
 	return {
 		languageKeyboard,
 		languageKeyboardRussian,
-		languageKeyboardEnglish
-	};
-};
-
-/**
- * Returns error language keyboard and its buttons according to the language
- * @param ctx - telegram context
- */
-export const getErrorLanguageKeyboard = (ctx: TelegrafContext) => {
-	const errorLanguageKeyboardRussian = ctx.i18n.t('keyboards.language.ru');
-	const errorLanguageKeyboardEnglish = ctx.i18n.t('keyboards.language.en');
-	const errorLanguageKeyboardBack = ctx.i18n.t('keyboards.back');
-
-	let errorLanguageKeyboard: any = Markup.keyboard([
-		[errorLanguageKeyboardRussian, errorLanguageKeyboardEnglish, errorLanguageKeyboardBack] as any
-	]);
-	errorLanguageKeyboard = errorLanguageKeyboard.resize().extra();
-
-	return {
-		errorLanguageKeyboard,
-		errorLanguageKeyboardRussian,
-		errorLanguageKeyboardEnglish,
-		errorLanguageKeyboardBack
+		languageKeyboardEnglish,
+		languageKeyboardBack
 	};
 };

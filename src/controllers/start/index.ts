@@ -14,7 +14,6 @@ start.enter(async (ctx: TelegrafContext) => {
 
     if (user) {
         await ctx.reply(ctx.i18n.t('scenes.start.welcome_back'), mainKeyboard);
-        ctx.scene.leave();
     } else {
         await ctx.reply(ctx.i18n.t('scenes.start.desc'), languageKeyboard);
     }
@@ -41,6 +40,9 @@ start.on('text', async (ctx: TelegrafContext) => {
     else if (language === '/language') {
         await User.deleteById(uid);
         ctx.scene.enter('start');
+    }
+    else if (language === ctx.i18n.t('keyboards.back') || ctx.i18n.t('keyboards.main.question') || ctx.i18n.t('keyboards.main.play')) {
+        ctx.scene.leave();
     }
     else {
         await ctx.reply(ctx.i18n.t('scenes.start.language'), languageKeyboard);

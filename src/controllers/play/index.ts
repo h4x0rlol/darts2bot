@@ -1,5 +1,5 @@
 import Scene from 'telegraf/scenes/base';
-import { getPlayKeyboard, getMainKeyboard, getErrorLanguageKeyboard, getBackKeyboard } from '../../utils/keyboards';
+import { getPlayKeyboard, getMainKeyboard, getLanguageKeyboard, getBackKeyboard } from '../../utils/keyboards';
 import { TelegrafContext } from 'telegraf/typings/context';
 import Question from '../../models/Question';
 import User from '../../models/User';
@@ -13,7 +13,7 @@ play.enter(async (ctx: TelegrafContext) => {
   // console.log(`${id} enters play scene`);
   const { playKeyboard } = getPlayKeyboard(ctx);
   const user = await User.findById(id);
-  const { errorLanguageKeyboard } = getErrorLanguageKeyboard(ctx);
+  const { languageKeyboard } = getLanguageKeyboard(ctx);
 
   if (user) {
     const lastQuestion = await Question.lastQuestionByCreatorId(id);
@@ -45,7 +45,7 @@ play.enter(async (ctx: TelegrafContext) => {
     }
   }
   else {
-    await ctx.reply(ctx.i18n.t('scenes.start.language'), errorLanguageKeyboard);
+    await ctx.reply(ctx.i18n.t('scenes.start.language'), languageKeyboard);
   }
 });
 
@@ -54,7 +54,7 @@ play.on('text', async (ctx: TelegrafContext) => {
   const id = ctx.from.id;
   const user = await User.findById(id);
   const { mainKeyboard } = getMainKeyboard(ctx);
-  const { errorLanguageKeyboard } = getErrorLanguageKeyboard(ctx);
+  const { languageKeyboard } = getLanguageKeyboard(ctx);
   const { playKeyboard } = getPlayKeyboard(ctx);
 
   if (user) {
@@ -105,7 +105,7 @@ play.on('text', async (ctx: TelegrafContext) => {
       ctx.scene.leave();
     }
     else if (!user) {
-      await ctx.reply(ctx.i18n.t('scenes.start.language'), errorLanguageKeyboard);
+      await ctx.reply(ctx.i18n.t('scenes.start.language'), languageKeyboard);
     }
   }
 });
