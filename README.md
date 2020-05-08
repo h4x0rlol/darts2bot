@@ -7,6 +7,7 @@ Recenty telegram added direct-hit emoji, so this bot provides you to play a Dart
 ### How to use
 ___
 #### You can try it [here](http://t.me/darts2bot "here") or search for @darts2bot in telegram
+#### Bot also supports inline mode, so you can add it to your groups
 
 Or locally:
 - git clone https://github.com/h4x0rlol/darts2bot
