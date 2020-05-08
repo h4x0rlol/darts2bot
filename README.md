@@ -2,7 +2,7 @@
 ___
 Recenty telegram added direct-hit emoji, so this bot provides you to play a Darts game, when you throw a dart at various questions, including your own.
 
-![](https://sun4-12.userapi.com/GgEu2VJjFDWgg9t3ICPcgTRdJLvInOUT_YCy8Q/inJ7y4Z7D-c.jpg)
+![](https://sun4-16.userapi.com/gfsBsMkxv0sA4iAZ-1iN5CAhbszRcCRthYrMNA/0m_-Szva1nI.jpg)
 
 ### How to use
 ___
