@@ -3,6 +3,9 @@
   "version": "0.1",
   "description": "Darts telegram game!",
   "author": "h4x0rlol",
+  "engines": {
+    "node": "12.16.1"
+  },
   "scripts": {
     "start": "yarn run serve",
     "build": "yarn run build-ts && yarn run tslint",

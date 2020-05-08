@@ -19,6 +19,10 @@ const pool = mysql.createPool({
 export default pool;
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
+const PORT = 3000;
+const URL = process.env.URL;
+bot.telegram.setWebhook(`${URL}/bot${process.env.BOT_TOKEN}`);
+bot.startWebhook(`/bot${process.env.BOT_TOKEN}`, undefined, PORT);
 
 const stage = new Stage([
   start,
