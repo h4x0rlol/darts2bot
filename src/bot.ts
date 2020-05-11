@@ -8,12 +8,29 @@ import session from 'telegraf/session';
 import mysql from 'mysql2';
 import { getMainKeyboard } from './utils/keyboards';
 import { TelegrafContext } from 'telegraf/typings/context';
+import { Stream } from 'stream';
+const SocksConnection = require('socksjs');
+
+const mysqlServer = {
+  host: process.env.MYSQL_HOST,
+  port: 3306
+};
+
+const fixieUrl = process.env.FIXIE_SOCKS_HOST;
+const fixieValues = fixieUrl.split(new RegExp('[/(:\\/@)/]+'));
+const fixieConnection = new SocksConnection(mysqlServer, {
+  user: fixieValues[0],
+  pass: fixieValues[1],
+  host: fixieValues[2],
+  port: fixieValues[3],
+});
 
 const pool = mysql.createPool({
   host: process.env.MYSQL_HOST,
   user: process.env.MySQL_USER,
   database: process.env.MYSQL_DATABASE,
-  password: process.env.MYSQL_PASSWORD
+  password: process.env.MYSQL_PASSWORD,
+  stream: fixieConnection
 }).promise();
 
 export default pool;
