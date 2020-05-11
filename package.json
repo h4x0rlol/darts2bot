@@ -30,7 +30,6 @@
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
     "mysql2": "^2.1.0",
-    "sockjs": "^0.3.20",
     "string-similarity": "^4.0.1",
     "telegraf": "^3.38.0",
     "telegraf-i18n": "^6.6.0",
