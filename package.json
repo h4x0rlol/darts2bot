@@ -27,7 +27,7 @@
     "@types/mysql2": "github:types/mysql2",
     "@types/sockjs": "^0.3.31",
     "@types/uuid": "^7.0.2",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "dotenv": "^8.2.0",
     "mysql2": "^2.1.0",
     "string-similarity": "^4.0.1",
