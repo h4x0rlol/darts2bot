@@ -31,8 +31,8 @@
     "dotenv": "^8.2.0",
     "mysql2": "^2.1.0",
     "string-similarity": "^4.0.1",
-    "telegraf": "^3.38.0",
-    "telegraf-i18n": "^6.6.0",
+    "telegraf": "3.38.0",
+    "telegraf-i18n": "6.6.0",
     "uuid": "^7.0.2"
   },
   "devDependencies": {
