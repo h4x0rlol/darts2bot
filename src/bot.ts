@@ -21,10 +21,10 @@ const pool = mysql
 export default pool;
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
-// const PORT = 3000 || process.env.PORT;
-// const URL = process.env.URL;
-// bot.telegram.setWebhook(`${URL}/bot${process.env.BOT_TOKEN}`);
-// bot.startWebhook(`/bot${process.env.BOT_TOKEN}`, undefined, +process.env.PORT);
+const PORT = 3000 || process.env.PORT;
+const URL = process.env.URL;
+bot.telegram.setWebhook(`${URL}/bot${process.env.BOT_TOKEN}`);
+bot.startWebhook(`/bot${process.env.BOT_TOKEN}`, undefined, +process.env.PORT);
 
 const stage = new Stage([start, question, play]);
 
